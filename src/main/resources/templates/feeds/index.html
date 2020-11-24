@@ -8,7 +8,7 @@
         <h2 class="text-center">Add XML RSS Feed</h2>
         <h4 class="text-center">Please provide new XML RSS Feed information</h4>
         <br>
-        <form th:action="@{/insert}" method="post">
+        <form th:action="@{/save}" th:object="${feed}" method="POST">
 
             <!-- success message -->
             <div th:if="${param.insert}">
@@ -19,6 +19,7 @@
                 <label for ="feedUrl"> XML RSS Feed URL </label>:
                 <input type="text" required="" class = "form-control" id ="feedUrl" name = "feedUrl"
                        placeholder="Enter feed url" autofocus="autofocus"
+                       th:field="*{url}"
                        oninvalid="this.setCustomValidity('Required enter feed url')"
                        oninput="setCustomValidity('')"/>
             </div>
@@ -28,6 +29,7 @@
                 <input required="" type="text"
                        id="feedName" name="feedName" class="form-control"
                        placeholder="Enter feed name"
+                       th:field="*{feedName}"
                        oninvalid="this.setCustomValidity('Required enter feed name')"
                        oninput="setCustomValidity('')"/>
             </div>

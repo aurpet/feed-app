@@ -1,6 +1,7 @@
 package com.application.feed.models;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -12,6 +13,7 @@ import java.util.Date;
  */
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 @Entity
 @Table(name = "feeds")
 public class Feed extends BaseEntity {
