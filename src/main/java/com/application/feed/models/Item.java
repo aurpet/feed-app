@@ -23,6 +23,7 @@ public class Item extends BaseEntity {
     @CreatedDate
     private Date published = new Date();
 
-    @OneToOne()
+    @ManyToOne()
+    @JoinColumn(name = "feed_id")
     private Feed feed;
 }

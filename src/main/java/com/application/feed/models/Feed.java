@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Date;
 
 /**
@@ -22,6 +23,6 @@ public class Feed extends BaseEntity {
     private Date lastUpdate;
     private String feedName;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private Item item;
+    @OneToMany(mappedBy = "feed", cascade = CascadeType.ALL)
+    private Collection<Item> items;
 }
