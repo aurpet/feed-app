@@ -1,0 +1,47 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body},'index')}">
+<body>
+
+<div class = "container">
+
+    <div class = "col-sm-auto">
+        <h2 class="text-center">Add XML RSS Feed</h2>
+        <h4 class="text-center">Please provide new XML RSS Feed information</h4>
+        <br>
+        <form th:action="@{/insert}" method="post">
+
+            <!-- success message -->
+            <div th:if="${param.insert}">
+                <div class="alert alert-info">Feed added successfully</div>
+            </div>
+
+            <div class = "form-group">
+                <label for ="feedUrl"> XML RSS Feed URL </label>:
+                <input type="text" required="" class = "form-control" id ="feedUrl" name = "feedUrl"
+                       placeholder="Enter feed url" autofocus="autofocus"
+                       oninvalid="this.setCustomValidity('Required enter feed url')"
+                       oninput="setCustomValidity('')"/>
+            </div>
+
+            <div class="form-group">
+                <label for="feedName">XML RSS Feed Name</label>:
+                <input required="" type="text"
+                       id="feedName" name="feedName" class="form-control"
+                       placeholder="Enter feed name"
+                       oninvalid="this.setCustomValidity('Required enter feed name')"
+                       oninput="setCustomValidity('')"/>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm">
+                        <input type="submit" name="login-submit" id="login-submit"
+                               class="form-control btn btn btn-success" value="Add feed" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
