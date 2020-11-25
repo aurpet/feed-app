@@ -65,7 +65,11 @@ public class FeedController {
     public String displayFeedById(@RequestParam("id") long feedId, Model model) {
         Feed feed = feedRepository.findFeedById(feedId);
         Collection<Item> items = feed.getItems();
-        model.addAttribute("items", items);
-        return "feeds/feed-details";
+        if (!items.isEmpty()){
+            model.addAttribute("items", items);
+            return "feeds/feed-details";
+        } else {
+            return "redirect:/all/?blank";
+        }
     }
 }

@@ -2,30 +2,37 @@
       th:replace="~{fragments/layout :: layout (~{::body},'feed')}">
 <body>
 
-
 <div class="container">
-    <table class="table table-bordered table-striped">
-        <thead class="thead-dark">
-        <tr>
-            <th>NAME</th>
-            <th>TITLE</th>
-            <th>LAST UPDATE DATE</th>
-            <th>URL</th>
-            <th>Action</th>
-        </tr>
-        </thead>
-        <tr th:each="Feed : ${feeds}">
-            <td th:text="${Feed.getFeedName()}"/>
-            <td th:text="${Feed.getTitle()}"/>
-            <td th:text="${Feed.getLastUpdate()}"/>
-            <td th:text="${Feed.getUrl()}"/>
-            <td>
-                <a th:href="@{/preview(id=${Feed.getId()})}"
-                   class="btn btn-info btn-sm">Preview</a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+
+    <div class="col-sm-auto">
+        <!-- feed data doesn't exist -->
+        <div th:if="${param.blank}">
+            <div class="alert alert-warning">Feed data not exist!!!</div>
+        </div>
+
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+            <tr>
+                <th>NAME</th>
+                <th>TITLE</th>
+                <th>LAST UPDATE DATE</th>
+                <th>URL</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tr th:each="Feed : ${feeds}">
+                <td th:text="${Feed.getFeedName()}"/>
+                <td th:text="${Feed.getTitle()}"/>
+                <td th:text="${Feed.getLastUpdate()}"/>
+                <td th:text="${Feed.getUrl()}"/>
+                <td>
+                    <a th:href="@{/preview(id=${Feed.getId()})}"
+                       class="btn btn-info btn-sm">Preview</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 
