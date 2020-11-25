@@ -1,6 +1,7 @@
 package com.application.feed.models;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -16,6 +17,7 @@ import java.util.HashSet;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@Builder
 @Entity
 @Table(name = "feeds")
 public class Feed extends BaseEntity {

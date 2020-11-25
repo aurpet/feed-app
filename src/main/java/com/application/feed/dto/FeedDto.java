@@ -1,5 +1,6 @@
 package com.application.feed.dto;
 
+import com.application.feed.models.Item;
 import lombok.Data;
 import lombok.ToString;
 
@@ -18,5 +19,5 @@ public class FeedDto {
     private String title;
     private Date lastUpdate;
     private String feedName;
-    private Collection<ItemDto> items = new HashSet<>();
+    private Collection<Item> items = new HashSet<>();
 }

@@ -25,7 +25,7 @@ public class Item extends BaseEntity {
 
     private Date published;
 
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "feed_id")
     private Feed feed;
 }

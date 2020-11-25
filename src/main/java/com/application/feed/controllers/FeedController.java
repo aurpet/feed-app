@@ -1,6 +1,6 @@
 package com.application.feed.controllers;
 
-import com.application.feed.models.Feed;
+import com.application.feed.dto.FeedDto;
 import com.application.feed.services.FeedService;
 import com.application.feed.utils.RssReader;
 import org.springframework.stereotype.Controller;
@@ -23,16 +23,16 @@ public class FeedController {
 
     @GetMapping("/")
     public String displayIndexPage(Model model) {
-        model.addAttribute("feed", new Feed());
+        model.addAttribute("feed", new FeedDto());
         return "feeds/index";
     }
 
     @PostMapping("/save")
-    private String saveFeed(Feed feed) {
+    private String saveFeed(FeedDto feed) {
         if (feedService.feedExist(feed.getFeedName())){
             return "redirect:/?exist";
         } else {
-            feedService.saveFeed(RssReader.readRss(feed.getUrl(), feed.getFeedName()));
+            feedService.save(RssReader.readRss(feed.getUrl(), feed.getFeedName()));
             return "redirect:/?insert";
         }
 

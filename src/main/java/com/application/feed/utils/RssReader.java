@@ -1,5 +1,6 @@
 package com.application.feed.utils;
 
+import com.application.feed.dto.FeedDto;
 import com.application.feed.models.Feed;
 import com.application.feed.models.Item;
 import com.rometools.rome.feed.synd.*;
@@ -20,8 +21,8 @@ import java.util.*;
 public class RssReader {
     public static String feedString;
 
-    public static Feed readRss(String feedUrl, String feedName) {
-        Feed myFeed = new Feed();
+    public static FeedDto readRss(String feedUrl, String feedName) {
+        FeedDto myFeed = new FeedDto();
         try {
             URL url = new URL(feedUrl);
             SyndFeedInput input = new SyndFeedInput();
