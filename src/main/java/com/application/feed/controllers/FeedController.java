@@ -2,6 +2,7 @@ package com.application.feed.controllers;
 
 import com.application.feed.models.Feed;
 import com.application.feed.services.FeedService;
+import com.application.feed.utils.RssReader;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,7 +29,12 @@ public class FeedController {
 
     @PostMapping("/save")
     private String saveFeed(Feed feed) {
-        feedService.saveFeed(feed);
-        return "redirect:/";
+        if (feedService.feedExist(feed.getFeedName())){
+            return "redirect:/?exist";
+        } else {
+            feedService.saveFeed(RssReader.readRss(feed.getUrl(), feed.getFeedName()));
+            return "redirect:/?insert";
+        }
+
     }
 }

@@ -23,8 +23,18 @@ public class FeedServiceImpl implements FeedService {
     }
 
     @Override
-    public void saveFeed(Feed feed) {
-        feedRepository.save(feed);
+    public Feed saveFeed(Feed feed) {
+        return feedRepository.save(feed);
+    }
+
+    @Override
+    public boolean feedExist(String feedName) {
+        Feed feed = feedRepository.findByFeedName(feedName);
+        if (feed==null){
+            return false;
+        } else {
+            return true;
+        }
     }
 
     @Override

@@ -10,7 +10,10 @@ import java.util.Set;
  */
 public interface FeedService {
 
-    void saveFeed(Feed feed);
+    Feed saveFeed(Feed feed);
+
+    boolean feedExist(String nickName);
+
 
     Set<Feed> getFeeds();
 

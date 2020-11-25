@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
 
 /**
  * @author Aurimas
@@ -24,5 +25,5 @@ public class Feed extends BaseEntity {
     private String feedName;
 
     @OneToMany(mappedBy = "feed", cascade = CascadeType.ALL)
-    private Collection<Item> items;
+    private Collection<Item> items = new HashSet<>();
 }
