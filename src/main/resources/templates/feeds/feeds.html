@@ -7,23 +7,26 @@
     <table class="table table-bordered table-striped">
         <thead class="thead-dark">
         <tr>
-            <th>Name</th>
-            <th>Title</th>
-            <th>Last update date</th>
-            <th>Url</th>
+            <th>NAME</th>
+            <th>TITLE</th>
+            <th>LAST UPDATE DATE</th>
+            <th>URL</th>
+            <th>Action</th>
         </tr>
         </thead>
-        <tbody id="invoiceTable">
         <tr th:each="Feed : ${feeds}">
             <td th:text="${Feed.getFeedName()}"/>
             <td th:text="${Feed.getTitle()}"/>
             <td th:text="${Feed.getLastUpdate()}"/>
             <td th:text="${Feed.getUrl()}"/>
+            <td>
+                <a th:href="@{/preview(id=${Feed.getId()})}"
+                   class="btn btn-info btn-sm">Preview</a>
+            </td>
         </tr>
         </tbody>
     </table>
 </div>
-
 
 
 </body>

@@ -18,6 +18,8 @@ public interface FeedRepository extends CrudRepository<Feed, Long> {
 
     List<Feed> findAll();
 
+    Feed findFeedById(long id);
+
     @Query("SELECT f FROM Feed f WHERE f.url = :url")
     Feed findByFeedUrl(@Param("url") String userId);
 }
