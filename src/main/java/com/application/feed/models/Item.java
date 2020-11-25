@@ -2,7 +2,6 @@ package com.application.feed.models;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -18,10 +17,11 @@ import java.util.Date;
 public class Item extends BaseEntity {
     private String title;
     private String link;
+
+    @Column(columnDefinition = "TEXT")
     private String description;
 
-    @CreatedDate
-    private Date published = new Date();
+    private Date published;
 
     @ManyToOne()
     @JoinColumn(name = "feed_id")
