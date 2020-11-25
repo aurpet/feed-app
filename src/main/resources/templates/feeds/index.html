@@ -11,7 +11,7 @@
 
         <!-- feed exist -->
         <div th:if="${param.exist}">
-            <div class="alert alert-danger">Feed name already exist</div>
+            <div class="alert alert-danger">Feed already exist</div>
         </div>
 
         <!-- success message -->
@@ -42,7 +42,7 @@
 
             <div class="form-group ">
                 <button type="submit" class="btn btn-success btn-lg btn-block">Add feed</button>
-                <a class="btn btn btn-secondary btn-lg btn-block" th:href="@{/}"
+                <a class="btn btn btn-secondary btn-lg btn-block" th:href="@{/all}"
                    role="button">Show all</a>
             </div>
 

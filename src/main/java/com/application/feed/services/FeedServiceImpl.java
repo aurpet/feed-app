@@ -28,17 +28,17 @@ public class FeedServiceImpl implements FeedService {
                 .feedName(feedDto.getFeedName())
                 .items(feedDto.getItems())
                 .build();
-
         return feedRepository.save(feed);
     }
 
     @Override
-    public boolean feedExist(String feedName) {
-        Feed feed = feedRepository.findByFeedName(feedName);
+    public boolean feedExist(String feedUrl) {
+        Feed feed = feedRepository.findByFeedUrl(feedUrl);
         if(feed==null){
             return false;
         } else {
             return true;
         }
     }
+
 }

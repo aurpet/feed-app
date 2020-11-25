@@ -1,14 +1,13 @@
 package com.application.feed.repositories;
 
 import com.application.feed.models.Feed;
-import com.application.feed.models.Item;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import java.util.Set;
+import java.util.List;
+
 
 /**
  * @author Aurimas
@@ -17,5 +16,8 @@ import java.util.Set;
 @Repository
 public interface FeedRepository extends CrudRepository<Feed, Long> {
 
-    Feed findByFeedName(String feedName);
+    List<Feed> findAll();
+
+    @Query("SELECT f FROM Feed f WHERE f.url = :url")
+    Feed findByFeedUrl(@Param("url") String userId);
 }

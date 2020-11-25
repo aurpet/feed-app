@@ -9,5 +9,5 @@ import com.application.feed.models.Feed;
  */
 public interface FeedService {
     Feed save (FeedDto feedDto);
-    boolean feedExist(String feedName);
+    boolean feedExist(String feedUrl);
 }

@@ -1,8 +1,9 @@
 package com.application.feed.dto;
 
 import com.application.feed.models.Item;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.ToString;
+import lombok.NoArgsConstructor;
 
 import java.util.Collection;
 import java.util.Date;
@@ -13,8 +14,10 @@ import java.util.HashSet;
  * created on 2020-11-24
  */
 @Data
-@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class FeedDto {
+    private Long id;
     private String url;
     private String title;
     private Date lastUpdate;

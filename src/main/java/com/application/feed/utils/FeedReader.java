@@ -1,38 +1,37 @@
 package com.application.feed.utils;
 
-import com.application.feed.dto.FeedDto;
 import com.application.feed.models.Feed;
 import com.application.feed.models.Item;
-import com.application.feed.repositories.FeedRepository;
-import com.rometools.rome.feed.synd.*;
+import com.rometools.rome.feed.synd.SyndContent;
+import com.rometools.rome.feed.synd.SyndEntry;
+import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.io.FeedException;
 import com.rometools.rome.io.SyndFeedInput;
 import com.rometools.rome.io.XmlReader;
-import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.*;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * @author Aurimas
  * created on 2020-11-25
  */
 
-public class RssReader {
+public class FeedReader {
 
-    public static FeedDto readRss(FeedDto feedDto) {
+    public static Feed readFeed(Feed feed) {
         try {
-            URL url = new URL(feedDto.getUrl());
             SyndFeedInput input = new SyndFeedInput();
-            SyndFeed feed = input.build(new XmlReader(url));
+            SyndFeed syndFeed = input.build(new XmlReader(new URL(feed.getUrl())));
 
-            List entries = feed.getEntries();
+            List entries = syndFeed.getEntries();
             Iterator itEntries = entries.iterator();
 
-            feedDto.setTitle(feed.getTitle());
-            feedDto.setLastUpdate(feed.getPublishedDate());
+            feed.setTitle(syndFeed.getTitle());
+            feed.setLastUpdate(syndFeed.getPublishedDate());
 
             while (itEntries.hasNext()) {
                 SyndEntry entry = (SyndEntry)itEntries.next();
@@ -42,13 +41,11 @@ public class RssReader {
                         .title(entry.getTitle())
                         .description(description.getValue())
                         .link(entry.getLink())
-                        .published(feed.getPublishedDate())
-                        //todo add feed
-                        //.feed(feedDto)
-
+                        .published(syndFeed.getPublishedDate())
+                        .feed(feed)
                         .build();
 
-                feedDto.getItems().add(item);
+                feed.getItems().add(item);
             }
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -57,6 +54,6 @@ public class RssReader {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return feedDto;
+        return feed;
     }
 }
