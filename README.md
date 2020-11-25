@@ -1,9 +1,13 @@
 # Feed-app
-Application stores feed data to embedded H2 database. 
+Application stores feed data to embedded H2 database and displays stored data.
 
-## Installation
+Available on the web url: https://naujienos.herokuapp.com/
 
-Clone a [code](github.com/aurpet/feed-app.git) to your local machine.
+**P.S. The first time url loads takes a little time, because deployed for free.** 
+
+## Local installation
+
+Clone this [code](github.com/aurpet/feed-app.git) to your local machine.
 ```bash
 git clone https://github.com/aurpet/feed-app.git
 ```
