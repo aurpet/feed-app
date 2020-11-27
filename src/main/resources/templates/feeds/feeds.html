@@ -17,17 +17,19 @@
                 <th>TITLE</th>
                 <th>LAST UPDATE DATE</th>
                 <th>URL</th>
-                <th>Action</th>
+                <th></th>
             </tr>
             </thead>
             <tr th:each="Feed : ${feeds}">
                 <td th:text="${Feed.getFeedName()}"/>
                 <td th:text="${Feed.getTitle()}"/>
                 <td th:text="${Feed.getLastUpdate()}"/>
-                <td th:text="${Feed.getUrl()}"/>
+                <td>
+                    <a th:href="${Feed.getUrl()}" th:text="${Feed.getUrl()}"></a>
+                </td>
                 <td>
                     <a th:href="@{/preview(id=${Feed.getId()})}"
-                       class="btn btn-info btn-sm">Preview</a>
+                       class="btn btn-info btn-sm">Details</a>
                 </td>
             </tr>
             </tbody>

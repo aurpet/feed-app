@@ -16,7 +16,9 @@
             </thead>
             <tr th:each="Item : ${items}">
                 <td th:text="${Item.getTitle()}"/>
-                <td th:text="${Item.getLink()}"/>
+                <td>
+                    <a th:href="${Item.getLink()}" th:text="${Item.getLink()}"></a>
+                </td>
                 <td th:text="${Item.getDescription()}"/>
                 <td th:text="${Item.getPublished()}"/>
             </tr>
