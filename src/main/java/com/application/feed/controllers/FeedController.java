@@ -72,4 +72,11 @@ public class FeedController {
             return "redirect:/all/?blank";
         }
     }
+
+    @GetMapping("/delete")
+    public String deleteInvoice(@RequestParam("id") long feedId) {
+        Feed feed = feedRepository.findFeedById(feedId);
+        feedRepository.delete(feed);
+        return "redirect:/all";
+    }
 }
